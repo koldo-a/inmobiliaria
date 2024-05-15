@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html th:replace="~{_global :: plantilla(~{::title}, ~{::main})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Inmuebles</title>
+</head>
+<body>
+<main>
+    <h1 id="heading" class="display-6 p-3"></h1>
+
+    <div class="contenedor-grande">
+        <div class="contenedor-mediano1">
+
+            <div class="contenedor2">
+                <form th:action="@{/listado-inmuebles}" method="get">
+                    <div class="form-group mb-3 mt-3  p-3">
+                        <input class="form-control" type="text" name="nombreODireccion"
+                               placeholder="Buscar vivienda por nombre o dirección">
+                        <ul class="nav nav-tabs bg-primary text-white">
+                            <li class="nav-item "><a class="nav-link text-white"
+                                                      th:href="@{/listado-inmuebles?tipo=Venta}">Venta</a></li>
+                            <li class="nav-item"><a class="nav-link text-white"
+                                                     th:href="@{/listado-inmuebles?tipo=Alquiler}">Alquiler</a></li>
+                            <li class="nav-item"><a class="nav-link text-white"
+                                                     th:href="@{/listado-inmuebles?tipo=}">Todos</a></li>
+                        </ul>
+                        <label>Rango de precio:</label>
+                        <div class="rango-group">
+
+                            <label>Mín:</label>
+                            <input class="form-control" type="number" name="precioMin"
+                                   placeholder="Precio mínimo">
+                            <label>Máx:</label>
+                            <input class="form-control" type="number" name="precioMax" placeholder="Precio máximo">
+                        </div>
+
+
+                        <button class="btn btn-primary" type="submit">Buscar</button>
+                    </div>
+                </form>
+            </div>
+            <h2 class="display-6 p-3 bg-primary text-white">Listado de Inmuebles</h2>
+            <div class="row g-4">
+                <div th:each="inmueble, iterStat : ${inmuebles}" class="col">
+                    <div class="card" onclick="showImage('${inmueble.imagenUrl}')">
+                        <img th:src="${inmueble.imagenUrl}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 th:text="${inmueble.nombre}" class="card-title">Nombre del anuncio</h5>
+                            <dl class="row">
+                                <dt class="col">Precio</dt>
+                                <dd class="col"
+                                    th:text="${#numbers.formatCurrency(inmueble.precio)}"></dd>
+                                <dt class="col">Tipo de propiedad</dt>
+                                <dd class="col" th:text="${inmueble.tipo}"></dd>
+                            </dl>
+                        </div>
+                        <div class="card-footer d-flex justify-content-around">
+                            <small class="text-body-secondary">
+                                <a class="btn btn-sm btn-primary"
+                                   th:href="${'inmueble/' + inmueble.id + '/editar'}">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <a class="btn btn-sm btn-danger"
+                                   th:href="${'inmuebles/' + inmueble.id + '/borrar'}">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-mediano2">
+            <img th:src="${inmuebles[0].imagenUrl}" class="card-img-top" alt="...">
+        </div>
+    </div>
+</main>
+
+<script th:inline="javascript">
+    function showImage(imageUrl) {
+        var selectedImage = document.querySelector('.contenedor-mediano2 img');
+        selectedImage.src = imageUrl;
+    }
+</script>
+
+</body>
+</html>
