@@ -1,0 +1,106 @@
+.navbar-text {
+	color: #73ff00;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+main {
+	margin: 0% 5% 0% 5%;
+}
+
+.form-control {
+	width: 80%;
+	margin: 1% 0% 1% 0%;
+}
+
+table {
+	max-width: 2000px;
+}
+
+.extracto-autor {
+	font-weight: bold;
+}
+
+.extracto-titulo {
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.backlink {
+	text-align: right;
+	font-size: 100px;
+	margin: 0% 25% 0% 0%;
+}
+
+.contenedor {
+	background-color: #e8eafd;
+	border-radius: 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.contenedor3 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+nav {
+	position: fixed !important;
+	width: 100%;
+	z-index: 9999;
+}
+
+a {
+	text-decoration: none;
+	color: #000000;
+	&:hover
+	{
+	color: #6f00ff;
+	}
+}
+
+.modal {
+	z-index: 9999;
+	color: #ffffff;
+}
+
+.d-flex {
+	justify-content: center;
+}
+
+label {	
+	font-weight: bold;
+}
+
+.btn-group {
+	width: 80%;
+}
+.contenedor-grande {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+}
+.rango-group {
+	display: flex;
+	align-items: center;
+	margin: 3px;
+}
+
+.contenedor-mediano2 {
+	padding: 5%;
+	max-width: 90%;
+	max-height: 50%;
+}
+
+.card {
+	cursor: pointer;
+}
+
+.dropdown-toggle {
+	z-index: 9999;
+}
+
+.form-select {
+	width: 80%;
+	margin-bottom: 5px;
+}

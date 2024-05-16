@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html th:replace="~{_global :: plantilla(~{::title}, ~{::main})}"
+	xmlns:th="http://www.thymeleaf.org">
+<title>Detalle Inmueble</title>
+<main>
+	<h1 class="display-1 p-3"></h1>
+	<h1 class="display-1 p-3">Inmueble</h1>
+
+	<h1>Detalles del inmueble</h1>
+	<div class="contenedor4">
+		<table
+			class="table table-bordered table-striped table-hover table-condensed table-responsive-sm">
+			<tr>
+				<th>ID</th>
+				<td th:text="${inmueble.id}"></td>
+			</tr>
+			<tr>
+				<th>Nombre</th>
+				<td th:text="${inmueble.nombre}"></td>
+			</tr>
+			<tr>
+				<th>Tipo de propiedad</th>
+				<td th:text="${inmueble.tipo}"></td>
+			</tr>
+			<tr>
+				<th>Precio</th>
+				<td th:text="${#numbers.formatCurrency(inmueble.precio)}"></td>
+				
+			</tr>
+			<tr>
+				<th>Imagen</th>
+				<td><img th:src="${inmueble.imagenUrl}"
+					alt="Imagen de la inmueble"
+					style="max-width: 300px; max-height: 300px;"></td>
+
+			</tr>
+			<tr>
+				<th>Imagen URL</th>
+				<td th:text="${inmueble.imagenUrl}"></td>
+			</tr>
+
+			<tr>
+				<th>Dirección</th>
+				<td th:text="${inmueble.direccion}"></td>
+			</tr>
+			<tr>
+				<th>Texto inmueble</th>
+				<td th:text="${inmueble.inmuebleTexto}"></td>
+			</tr>
+			<tr>
+				<th>Baños</th>
+				<td th:text="${inmueble.banyos}"></td>
+			</tr>
+			<tr>
+				<th>Cocina</th>
+				<td th:text="${inmueble.cocina} ? 'Sí' : 'No'"></td>
+			</tr>
+			<tr>
+				<th>Habitaciones</th>
+				<td th:text="${inmueble.habitaciones}"></td>
+			</tr>
+			
+			<tr>
+				<th>Propietario</th>
+				<td th:if="${inmueble.propietario != null}"
+					th:text="${inmueble.propietario.nombre} + ' ' + ${inmueble.propietario.apellido}"></td>
+				<td th:if="${inmueble.propietario == null}">Autor Desconocido</td>
+			</tr>
+		</table>
+
+	</div>
+</main>

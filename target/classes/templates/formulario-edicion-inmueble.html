@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html th:replace="~{_global :: plantilla(~{::title}, ~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Editar Inmueble</title>
+</head>
+
+<body>
+	<main sec:authorize="hasRole('ROLE_ADMIN')">
+		<h1 class="display-1 p-3"></h1>
+		<h1 class="display-1 p-3">Editar Inmueble</h1>
+
+<form th:action="@{/guardarCambiosInmueble}" method="post" th:object="${inmueble}">
+    <div class="form-group mb-3 mt-3 p-3">
+        <input type="hidden" th:field="*{id}">
+        
+        <!-- Título y input para el nombre -->
+        <label for="nombre">Nombre:</label>
+        <input class="form-control" th:field="*{nombre}" placeholder="Nombre" autofocus>
+        <span class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+        
+        <!-- Título y input para la descripción -->
+        <label for="descripcion">Descripción:</label>
+        <input class="form-control" th:field="*{descripcion}" placeholder="Descripción">
+        <span class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></span>
+        
+        <!-- Título y input para la descripción -->
+        <label for="descripcion">Fecha:</label>
+        <input class="form-control" type="date" th:field="*{fechaInmueble}" placeholder="fechaInmueble">
+        <span class="text-danger" th:if="${#fields.hasErrors('fechaInmueble')}" th:errors="*{fechaInmueble}"></span>
+        
+        <!-- Título y textarea para el texto de la inmueble -->
+        <label for="inmuebleTexto">Texto de la inmueble:</label>
+        <textarea class="form-control" th:field="*{inmuebleTexto}" placeholder="Texto de la inmueble"></textarea>
+        <span class="text-danger" th:if="${#fields.hasErrors('inmuebleTexto')}" th:errors="*{inmuebleTexto}"></span>
+        
+        <!-- Título y input para la URL de la imagen -->
+        <label for="imagenUrl">URL de la imagen:</label>
+        <input class="form-control" th:field="*{imagenUrl}" placeholder="URL de la imagen">
+        <span class="text-danger" th:if="${#fields.hasErrors('imagenUrl')}" th:errors="*{imagenUrl}"></span>
+        
+        <!-- Título y input para el ID del propietario -->
+        <label for="propietarioId">ID de Autor:</label>
+        <input class="form-control" th:field="*{propietario.id}" placeholder="Id de Autor">
+        <span class="text-danger" th:if="${#fields.hasErrors('propietario.id')}" th:errors="*{propietario.id}"></span>
+
+        <button class="btn btn-primary" type="submit">Actualizar</button>
+    </div>
+</form>
+
+	</main>
+</body>
+
+</html>
