@@ -92,6 +92,15 @@ label {
 	max-height: 50%;
 }
 
-card {
+.card {
 	cursor: pointer;
+}
+
+.dropdown-toggle {
+	z-index: 9999;
+}
+
+.form-select {
+	width: 80%;
+	margin-bottom: 5px;
 }

@@ -25,21 +25,22 @@
 						th:field="*{imagenUrl}" placeholder="URL de imagen" autofocus>
 					<span class="text-danger" th:if="${#fields.hasErrors('imagenUrl')}"
 						th:errors="*{imagenUrl}"></span> 
-					<label>Baños</label> <select class="form-control"
+					<select class="form-select"
 						th:field="*{banyos}" autofocus>
+					  <option selected th:value="0">Baños:</option>
 						<option th:each="i : ${#numbers.sequence(1, 9)}" th:value="${i}"
 							th:text="${i}"></option>
 					</select> <span class="text-danger"
 						th:if="${#fields.hasErrors('banyos')}" th:errors="*{banyos}"></span>
 
-					<label>Precio</label> <input class="form-control"
+					<input class="form-control"
 						th:field="*{precio}" placeholder="Precio" autofocus> <span
 						class="text-danger" th:if="${#fields.hasErrors('precio')}"
 						th:errors="*{precio}"></span> 
-					
-					<label>Tipo (Vivienda o
-						Alquiler)</label>
-					<select class="form-control" th:field="*{tipo}" autofocus>
+
+					<select class="form-select" th:field="*{tipo}" autofocus>
+					  <option selected th:value="0">Tipo (Vivienda o
+						Alquiler):</option>
 					    <option value="Vivienda">Vivienda</option>
 					    <option value="Alquiler">Alquiler</option>
 					</select>
@@ -47,30 +48,31 @@
 						<span class="text-danger"
 						th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></span> 
 					
-					<label>Cocina</label>
-					<select class="form-control" th:field="*{cocina}" autofocus>
+					<select class="form-select" th:field="*{cocina}" autofocus>
+					  <option selected th:value="0">Cocina:</option>
 						<option value="true">Sí</option>
 						<option value="false">No</option>
 					</select> 
 					<span class="text-danger" th:if="${#fields.hasErrors('cocina')}"
 						th:errors="*{cocina}"></span> 
-					<label>Habitaciones</label> <select
-						class="form-control" th:field="*{habitaciones}" autofocus>
+					<select
+						class="form-select" th:field="*{habitaciones}" autofocus>
+					  <option selected th:value="0">Habitaciones:</option>
 						<option th:each="i : ${#numbers.sequence(1, 9)}" th:value="${i}"
 							th:text="${i}"></option>
 					</select> <span class="text-danger"
 						th:if="${#fields.hasErrors('habitaciones')}"
 						th:errors="*{habitaciones}"></span> 
 						
-					<label for="nombre">Selecciona
-						un propietario registrado:</label> <select class="form-control"
-						th:field="*{propietario}" autofocus>
-						<option th:each="propietario : ${propietarios}"
-							th:value="${propietario.id}"
-							th:text="${propietario.nombre}+' '+${propietario.apellido}"></option>
-					</select><span class="text-danger"
+					<select class="form-select" th:field="*{propietario}" autofocus>
+					  <option selected th:value="Desconocido">Selecciona un propietario registrado:</option>
+						<option th:each="propietario : ${propietarios}" th:value="${propietario.id}" th:text="${propietario.nombre}+' '+${propietario.apellido}"></option>
+					</select>
+					<span class="text-danger"
 						th:if="${#fields.hasErrors('propietario')}"
-						th:errors="*{propietario}"></span> <input class="form-control"
+						th:errors="*{propietario}"></span> 
+	
+					<input class="form-control"
 						th:field="*{direccion}" placeholder="Descripción" autofocus>
 					<span class="text-danger" th:if="${#fields.hasErrors('direccion')}"
 						th:errors="*{direccion}"></span>
@@ -106,8 +108,8 @@
 						type="number" name="precioMax" placeholder="Precio máximo">
 					
 					            <!-- Selector para elegir entre Vivienda o Alquiler -->
-            <label for="tipo">Tipo:</label>
-            <select class="form-control" name="tipo">
+            <select class="form-select" name="tipo">
+            <option selected th:value="Todos">Tipo de propiedad:</option>
            		<option value="">Todos</option>
                 <option value="Venta">Venta</option>
                 <option value="Alquiler">Alquiler</option>
