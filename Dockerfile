@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /app
 
 # Copiar el archivo JAR de la aplicación al contenedor
-COPY target/inmobiliaria-0.0.1-SNAPSHOT.jar app.jar
+COPY target/GestionCRUD-0.0.1-SNAPSHOT.jar app.jar
 
 # Exponer el puerto en el que la aplicación se ejecutará
 EXPOSE 8080
